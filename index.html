@@ -152,15 +152,6 @@ section{padding-block:clamp(52px,8vw,88px)}
 .jobs span{font-weight:600;font-size:.88rem;background:var(--stone);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
 .jobs span.soon{background:transparent;border-style:dashed;color:var(--muted);font-weight:500}
 
-/* noel */
-.xmas{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,56px);align-items:center;background:linear-gradient(135deg,#123a2b 0%,#0f2a22 55%,#561515 100%);color:#eef3ef;border-radius:var(--r);padding:clamp(26px,5vw,48px)}
-.xmas h2{color:#fff}
-.xmas p{color:#cfe0d8;margin-top:12px}
-.xmas ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
-.xmas li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:12px 14px;color:#e2ece7}
-.xmas li b{display:block;color:#ffe08a;font-size:.74rem;letter-spacing:.14em}
-.xmas code{color:#ffe08a}
-@media (max-width:800px){.xmas{grid-template-columns:1fr}}
 
 /* kits */
 .kits{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
@@ -330,7 +321,7 @@ footer .mj{font-size:.78rem;letter-spacing:.04em}
   </div>
 </nav>
 <div class="launch" role="note">
-  <div class="wrap"><b>❄ OUVERTURE</b><span id="launchtxt">Le serveur ouvre en décembre avec l'événement de Noël</span><span class="cd" id="cd" hidden></span></div>
+  <div class="wrap"><b>✦ OUVERTURE</b><span id="launchtxt">Le serveur ouvre début janvier</span><span class="cd" id="cd" hidden></span></div>
 </div>
 
 <main>
@@ -383,24 +374,6 @@ footer .mj{font-size:.78rem;letter-spacing:.04em}
     </div>
     <div class="jobs" aria-label="Les métiers">
       <span>Bûcheron</span><span>Mineur</span><span>Chasseur</span><span class="soon">D'autres métiers arrivent dans les prochaines mises à jour</span>
-    </div>
-  </div>
-</section>
-
-<section id="noel" style="padding-top:0">
-  <div class="wrap">
-    <div class="xmas">
-      <div>
-        <p class="eyebrow" style="color:#ffe08a">Événement de lancement</p>
-        <h2>Noël à Valdoria</h2>
-        <p>Le royaume ouvre ses portes en décembre avec son calendrier de l'Avent. Rejoins le Discord pour connaître la date exacte de l'ouverture.</p>
-        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px"><a class="btn gold" href="#discord">Être prévenu sur Discord</a></div>
-      </div>
-      <ul>
-        <li><b>CALENDRIER DE L'AVENT</b>Du 1er au 25 décembre, ouvre la boîte du jour au spawn et reçois un cadeau : argent, clés ou objets.</li>
-        <li><b>UN CADEAU PAR JOUR</b>Un jour raté ne se rattrape pas : connecte-toi chaque jour. Ton calendrier avec <code>/xmas</code>.</li>
-        <li><b>TOUS À ÉGALITÉ</b>Tout le monde part de zéro le jour de l'ouverture.</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -500,7 +473,7 @@ footer .mj{font-size:.78rem;letter-spacing:.04em}
     <p class="lead">Chaque achat finance l'hébergement, les mises à jour et les événements de Valdoria.</p>
     <div class="trust"><span>Paiement par carte ou PayPal via Tebex</span><span>Livraison automatique en jeu</span><span>Reçu envoyé par e-mail</span></div>
   </div></div>
-  <div class="notice" id="shopnotice"><div class="wrap"><b>Ouverture en décembre.</b><span>La boutique ouvre avec le serveur. Tu peux déjà découvrir les articles et leurs prix.</span></div></div>
+  <div class="notice" id="shopnotice"><div class="wrap"><b>Ouverture début janvier.</b><span>La boutique ouvre avec le serveur. Tu peux déjà découvrir les articles et leurs prix.</span></div></div>
   <section style="padding-top:30px">
     <div class="wrap">
       <div class="tools"><div class="chips" id="shopchips" aria-label="Catégories"></div></div>
@@ -804,7 +777,6 @@ const CMDS=[
  ['PvP & guildes','/pvp','L\'arène PvP (ton stuff ne risque rien)'],
  ['Bonus','/cles','Récupérer tes clés de caisse'],
  ['Bonus','/cosmetique','Tes cosmétiques : chapeaux et autres décorations'],
- ['Bonus','/xmas','Ton calendrier de l\'Avent (en décembre)'],
  ['Bonus','/tetes','La chasse aux têtes cachées du spawn'],
  ['Bonus','/afk','La zone AFK'],
 ];
@@ -848,7 +820,7 @@ drawVotes();
 (function(){
   if(!OPEN_DATE)return;const end=new Date(OPEN_DATE).getTime();if(isNaN(end))return;
   const cd=document.getElementById('cd'),txt=document.getElementById('launchtxt');
-  txt.textContent='Ouverture le '+new Date(end).toLocaleString('fr-FR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'})+' avec l\'événement de Noël';
+  txt.textContent='Ouverture le '+new Date(end).toLocaleString('fr-FR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
   cd.hidden=false;
   function tick(){const s=Math.max(0,Math.floor((end-Date.now())/1000));
     if(!s){txt.textContent='Le serveur est ouvert ! Bon jeu à tous';cd.hidden=true;return;}
